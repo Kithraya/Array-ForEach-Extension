@@ -13,8 +13,8 @@ return -4 = jump -4.
 
 var x = 0;
 
-var k = foreach(['0','1','2'], function(index, value) {
-    this.push(x++);
+var k = foreach( [ '0', '1', '2' ], function ( index, value ) {
+    this.push( x++ );
 });
 
-console.log(k); // ['0', '1', '2', 0, 1, 2 ]
+console.log( k ); // [ '0', '1', '2', 0, 1, 2 ]
