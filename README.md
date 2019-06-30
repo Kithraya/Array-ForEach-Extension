@@ -2,22 +2,29 @@
 Helper function foreach with extended functionality.
 Next version adds support for strings and arraylike objects
 
-Syntax: `foreach([...], callback( index, value ) {...}, BOOLEAN use_DYNAMIC_length, modify_scope);`
+Syntax: `foreach( [...], callback( index, value ) {...}, BOOLEAN use_DYNAMIC_length, OBJECT modify_scope);`
 
 
 If not set, `use_DYNAMIC_length` defaults to `false`;
+If not set, `modify_scope` defaults to the initial array passed.
 
-You can break out of the `foreach` early by returning certain values within the callback function:
+You can break out of `foreach` early by returning certain values within the callback function:
 
-`return false` = `break`,
-`return true` = `continue`,
-`return 4` = `jump 4`,
-`return -4` = `jump -4`.
+`//for (var i=0;i<6;i++) {`
+
+    return false : break;
+    return true : continue;
+    return 4 : i+=4;
+    return -4 : i-=4;
+
+`//}`
+
+Example:
 
 `var x = 0;`
 
-var k = foreach( [ '0', '1', '2' ], function ( index, value ) {
+`var k = foreach( [ '0', '1', '2' ], function ( index, value ) {
     this.push( x++ );
-});
+});`
 
 `console.log( k ); // [ '0', '1', '2', 0, 1, 2 ]`
