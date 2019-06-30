@@ -1,4 +1,4 @@
-# foreach
+# foreach ( array, function (index, value) {..}, use_DYNAMIC_length, modify_scope )
 Helper function foreach with extended functionality.
 Next version adds support for strings and arraylike objects
 
