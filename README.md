@@ -1,8 +1,8 @@
-# foreach ( array, function (index, value) {..}, `use_DYNAMIC_length`, `modify_scope` )
+# foreach ( `array`, `function` (index, value) {..}, `use_DYNAMIC_length`, `modify_scope` )
 Helper function foreach with extended functionality.
 Next version adds support for strings and arraylike objects
 
-Syntax: `foreach( [...], callback( index, value ) {...}, BOOLEAN use_DYNAMIC_length, OBJECT modify_scope);`
+Syntax: `foreach( ARRAY [...], FUNCTION callback( index, value ) {...}, BOOLEAN use_DYNAMIC_length, OBJECT modify_scope);`
 
 
 If not set, `use_DYNAMIC_length` defaults to `false`;
