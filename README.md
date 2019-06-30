@@ -4,6 +4,9 @@ Next version adds support for strings and arraylike objects
 
 Syntax: foreach( array, function ( index, value ) {..}, use_DYNAMIC_length, set_THIS_scope);
 
+
+If not set, use_DYNAMIC_length defaults to `false`;
+
 You can break out of the foreach early by returning certain values within the callback function:
 
 return false = "break",
