@@ -24,7 +24,7 @@ Example:
 
 `var x = 0;`
 
-`var k = foreach( [ '0', '1', '2' ], function ( index, value ) {
+`var k = foreach( [ '0', '1', '2' ], function ( value, index ) {
     this.push( x++ );
 });`
 
