@@ -2,7 +2,7 @@
 Helper function foreach with extended functionality.
 Next version adds support for strings and arraylike objects
 
-Syntax: `foreach( ARRAY [...], FUNCTION callback( index, value ) {...}, BOOLEAN use_DYNAMIC_length, OBJECT modify_scope);`
+Syntax: `foreach( ARRAY [...], FUNCTION callback( value, index ) {...}, BOOLEAN use_DYNAMIC_length, OBJECT modify_scope);`
 
 
 If not set, `use_DYNAMIC_length` defaults to `false`;
