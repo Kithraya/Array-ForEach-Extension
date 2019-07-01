@@ -9,8 +9,8 @@ function foreach(array, callback, dynamiclength, callscope) {
 	scope = (callscope === x) ? array : callscope;
 	
 	for (; i < (dynamiclength ? array.length : len); i++) {
-
-		 value = callback.call(scope, i, scope[i]); 
+							// this , value, index, array
+		 value = callback.call(scope, scope[i], i, scope); // do we modify value in function(index, value, array) { }
 		 
 		 if (value === false) { break; } else
 		 if (value === true) { continue; } else
