@@ -13,10 +13,10 @@ You can break out of `foreach` early by returning certain values within the call
 
 `//for (var i=0;i<6;i++) {`
 
-    return false : break;
-    return true : continue;
-    return 4 : i+=4;
-    return -4 : i-=4;
+    return false => break;
+    return true => continue;
+    return 4 => i+=4;
+    return -4 => i-=4;
 
 `//}`
 
