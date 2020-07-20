@@ -7,7 +7,7 @@ if (!Array.prototype['forEach']) {
 
     if (this === null) { throw new TypeError('this is null or not defined'); }
 
-	var T, k;
+    var T, k;
     // 1. Let O be the result of calling toObject() passing the
     // |this| value as the argument.
     var O = Object(this);
