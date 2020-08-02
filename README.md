@@ -11,7 +11,7 @@ foreach(value, callback(currentValue [, index [, array [, iterations]]])[, dynam
 
 foreach(['Z','Y','X','W'], function(value, index, self, iterations) {
   
-  console.log(value, index, array, iterations); 
+  console.log(value, index, self, iterations); 
   
   /* 'Z', 0, ['Z','Y','X','W'], 0
      'Y', 1, ['Z','Y','X','W'], 1
