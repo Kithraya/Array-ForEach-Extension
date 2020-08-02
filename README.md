@@ -68,10 +68,10 @@ foreach ( 40, function ( v, i, s, count ) {
 
 // 0, 0, 40, 0
 // 1, 1, 40, 1  
-// 3, 3, 40, 3  (note that we skipped 2 here)
+// 3, 3, 40, 2 
 // ...
-// 19, 19, 40, 19
-// 20, 20, 40, 20
+// 19, 19, 40, 18
+// 20, 20, 40, 19
 ```
 
 You may be wondering what the point of 'count' is. You can jump to any point in your `foreach` loop by returning specific values:
