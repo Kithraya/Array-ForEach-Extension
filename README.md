@@ -57,13 +57,13 @@ foreach ( 40, function(value, index, self, count) { console.log(value,index,self
 ```
 For numbers, `value` is the same as `index`. 
 
-You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function. Returning `true` is equivalent to the `continue` statement.
+You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function. Returning `true` or `undefined is equivalent to the `continue` statement.
 
 ```javascript
 foreach ( 40, function ( v, i, s, count ) {
   if (i === 2) { return true }
-  console.log(v, i, s, count);
   if (i === 20) { return false }
+  console.log(v, i, s, count);
 });
 
 // 0, 0, 40, 0
