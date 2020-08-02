@@ -2,7 +2,7 @@
 Helper function foreach with extended functionality.
 Next version adds support for arraylike objects
 
-### H3: Syntax: 
+#### : Syntax: 
 `foreach( MULTI [array or iterable value], FUNCTION [ callback( value, index, self, iterations ) {} ], BOOLEAN [useDynamicLength], MULTI [modify_scope] );`
 
 ```javascript
