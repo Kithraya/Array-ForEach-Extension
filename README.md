@@ -50,21 +50,28 @@ foreach(40, function(value, index, self, count) { console.log(value,index,self,c
 // 0, 0, 40, 0 
 // 1, 1, 40, 1 
 // 2, 2, 40, 2
-// etc
+// ...
+// 38, 38, 40, 38
+// 39, 39, 40, 39
 
 ```
 For numbers, `value` is the same as `index`. 
 
-You can instantly break out of any foreach loop by returning `false` within your callback function:
+You can instantly break out of any foreach loop by returning `false` within your callback function. Returning `true` is equivalent to the `continue` statement.
 
-foreach(40, function(v,i,s,c) {
-  console.log(v,i,s,c);
+```javascript
+foreach(40, function(v,i,s,count) {
+  if (i === 2) { return true }
+  console.log(v, i, s, count);
   if (i === 20) { return false }
 });
 
 // 0, 0, 40, 0
-// 1, 1, 40, 1 
+// 1, 1, 40, 1  
+// 3, 3, 40, 3  (note that we skipped 2 here)
 // ...
 // 19, 19, 40, 19
 // 20, 20, 40, 20
+```
 
+You may be wondering what the point of 'count' is. You can jump to any point in your `foreach` loop by returning specific values:
