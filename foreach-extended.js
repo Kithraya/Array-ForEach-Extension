@@ -17,7 +17,7 @@ function foreach(array, callback, dynamiclength, callscope) {
 	scope = (callscope === x) ? array : callscope;
 	
 	// MDN forEach syntax: arr.forEach(callback(currentValue [, index [, array]])[, thisArg])
-
+	// add another parameter 'iterations'?
 	for (; i < (dynamiclength ? array.length : len); i++) {
 							
 		 value = callback.call(scope, (num ? i : array[i]), i, array); // changing `array[i]` to `(num ? i : array[i])` strangely makes iteration ~6x faster for numbers
