@@ -1,5 +1,5 @@
 foreach.version = "1.2.4";
-///foreach.maxIterations = 50000000;
+foreach.maxIterations = Infinity;
 
 function foreach(array, callback, dynamiclength, callscope) { 
 
