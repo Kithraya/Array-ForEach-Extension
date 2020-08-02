@@ -20,7 +20,7 @@ function foreach(array, callback, dynamiclength, callscope) {
 
 	for (; i < (dynamiclength ? array.length : len); i++) {
 							
-		 value = callback.call(scope, (num ? i : array[i]), i, array); // changing `array[i]` to `(num ? i : array[i])` makes iteration ~6x faster for numbers
+		 value = callback.call(scope, (num ? i : array[i]), i, array); // changing `array[i]` to `(num ? i : array[i])` strangely makes iteration ~6x faster for numbers
 
 		 if (value === false) {break} else
 		 if (value === true) {continue} else
