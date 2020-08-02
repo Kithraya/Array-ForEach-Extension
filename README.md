@@ -40,3 +40,31 @@ foreach ( document.querySelectorAll('div'), function(value,index,self,count) {
 
 
 ```
+
+##### foreach() also loops through numbers and strings:
+
+```javascript
+
+foreach(40, function(value, index, self, count) { console.log(value,index,self,count); });
+
+// 0, 0, 40, 0 
+// 1, 1, 40, 1 
+// 2, 2, 40, 2
+// etc
+
+```
+For numbers, `value` is the same as `index`. 
+
+You can instantly break out of any foreach loop by returning `false` within your callback function:
+
+foreach(40, function(v,i,s,c) {
+  console.log(v,i,s,c);
+  if (i === 20) { return false }
+});
+
+// 0, 0, 40, 0
+// 1, 1, 40, 1 
+// ...
+// 19, 19, 40, 19
+// 20, 20, 40, 20
+
