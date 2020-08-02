@@ -4,7 +4,7 @@ Next version adds support for arraylike objects
 
 ### Syntax: 
 ```javascript
-foreach( CUSTOM [array or iterable value], FUNCTION [ callback( value, index, self, iterations ) {} ], BOOLEAN [useDynamicLength], CUSTOM [modify_scope] );
+foreach( MULTI {array or iterable value}, FUNCTION { callback(value [, index, [, self, [ iterations]]]){...} }, BOOLEAN {useDynamicLength}, MULTI {change THIS scope} );
 ```
 
 ```javascript
