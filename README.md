@@ -3,7 +3,9 @@ Helper function foreach with extended functionality.
 Next version adds support for arraylike objects
 
 ### Syntax: 
-`foreach( MULTI [array or iterable value], FUNCTION [ callback( value, index, self, iterations ) {} ], BOOLEAN [useDynamicLength], MULTI [modify_scope] );`
+```javascript
+foreach( MULTI [array or iterable value], FUNCTION [ callback( value, index, self, iterations ) {} ], BOOLEAN [useDynamicLength], MULTI [modify_scope] );
+```
 
 ```javascript
 foreach(collection, callback(value [, index [, self [, iterations]]])[, dynamiclength][, thisArg]);
