@@ -23,12 +23,13 @@ foreach(['Z','Y','X','W'], function(value, index, array, iterations) {
 
 });
 
+// assuming there are only 2 'div's on the page:
 foreach ( document.querySelectorAll('div'), function(value,index,self,count) {
 		
-  console.log(value, index, self, count);
+  console.log(value, index, self, count, this);
       
-   /* <div></div>, 0, NodeList(2), 0
-      <div></div>, 1, NodeList(2), 1
+   /* <div></div>, 0, NodeList(2), 0, NodeList(2)
+      <div></div>, 1, NodeList(2), 1, NodeList(2)
    */
     
 		
