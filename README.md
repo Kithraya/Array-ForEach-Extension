@@ -1,4 +1,4 @@
-# foreach ( `array`, `function` (value, index) {..}, `use_DYNAMIC_length`, `modify_scope` )
+# `foreach(value, callback(currentValue [, index [, array [, iterations]]])[, dynamiclength][, thisArg])`
 Helper function foreach with extended functionality.
 Next version adds support for strings and arraylike objects
 
@@ -22,10 +22,10 @@ You can break out of `foreach` early by returning certain values within the call
 
 Example:
 
-`var x = 0;`
+`var x = 0, s = ['a','b','c']`;
 
-`var k = foreach( [ '0', '1', '2' ], function ( value, index ) {
+`var k = foreach(s, function ( value, index ) {
     this.push( x++ );
 });`
 
-`console.log( k ); // [ '0', '1', '2', 0, 1, 2 ]`
+`console.log( k ); // [ '0', '1', '2', 'a0', 'b1', 'c2' ]`
