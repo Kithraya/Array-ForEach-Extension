@@ -21,7 +21,7 @@ function foreach(array, callback, dynamiclength, callscope) {
 	// MDN forEach syntax: arr.forEach(callback(currentValue [, index [, array]])[, thisArg])
 	// Ours: foreach(value, callback(currentValue [, index [, array [, iterations]]])[, dynamiclength][, thisArg])
 	
-	for (; i < (dynamiclength ? array.length : len); i++,j++) {
+	for (; i < (dynamiclength ? array.length : len); i++) {
 		 /// if (j >= limit) { console.warn('Limit reached!'); break}
 		 value = callback.call(scope, (num ? i : array[i]), i, array, j); // changing `array[i]` to `(num ? i : array[i])` strangely makes iteration ~6x faster for numbers
 
@@ -35,6 +35,7 @@ function foreach(array, callback, dynamiclength, callscope) {
 		 if (typeof value === 'string') {
 			 // return "wait 1000"
 		 }
+		 j++;
 
 	}
 	return (str) ? array.join('') : array;
