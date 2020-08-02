@@ -2,7 +2,7 @@ foreach.version = "1.2.3";
 
 function foreach(array, callback, dynamiclength, callscope) { 
 
-	if (!array) { return } // Return `undefined` if falsy. It's not necessarily an array, it does need to be iterable in some form. 
+	if (!array) { return } // Return `undefined` if falsy. It's not necessarily an array, but it does need to be iterable in some form. 
 	// At present, `undefined`, `false`, `0`, `null`, `NaN`, and `''` do not make sense being iterable values.
 	if (typeof callback !== 'function') { throw new TypeError(callback + ' is not a function!'); }
 	
