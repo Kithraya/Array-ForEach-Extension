@@ -1,8 +1,8 @@
 # `foreach(value, callback(currentValue [, index [, array [, iterations]]])[, dynamiclength][, thisArg])`
 Helper function foreach with extended functionality.
-Next version adds support for strings and arraylike objects
+Next version adds support for arraylike objects
 
-Syntax: `foreach( ARRAY [...], FUNCTION callback( value, index ) {...}, BOOLEAN use_DYNAMIC_length, OBJECT modify_scope);`
+Syntax: `foreach( MULTI [array or iterable value], FUNCTION callback( value, index ) {...}, BOOLEAN useDynamicLength, MULTI modify_scope);`
 
 
 If not set, `use_DYNAMIC_length` defaults to `false`;
