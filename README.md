@@ -45,7 +45,7 @@ foreach ( document.querySelectorAll('div'), function(value,index,self,count) {
 
 ```javascript
 
-foreach(40, function(value, index, self, count) { console.log(value,index,self,count); });
+foreach ( 40, function(value, index, self, count) { console.log(value,index,self,count); });
 
 // 0, 0, 40, 0 
 // 1, 1, 40, 1 
@@ -60,7 +60,7 @@ For numbers, `value` is the same as `index`.
 You can instantly break out of any foreach loop by returning `false` within your callback function. Returning `true` is equivalent to the `continue` statement.
 
 ```javascript
-foreach(40, function(v,i,s,count) {
+foreach ( 40, function(v,i,s,count) {
   if (i === 2) { return true }
   console.log(v, i, s, count);
   if (i === 20) { return false }
