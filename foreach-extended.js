@@ -1,5 +1,5 @@
-foreach.version = "1.2.3";
-foreach.maxIterations = null;
+foreach.version = "1.2.4";
+///foreach.maxIterations = 50000000;
 
 function foreach(array, callback, dynamiclength, callscope) { 
 
@@ -10,6 +10,7 @@ function foreach(array, callback, dynamiclength, callscope) {
 	var i=0,j=0;
 	var len = (array === true) ? 1 : array.length || 0; // iterator
 	var str, value, scope, x, num;
+	var limit = foreach.maxIterations || Infinity;
 
 	if (typeof array === 'number') { dynamiclength = false; len = array; num = true } else
 	if (typeof array === 'string') { array = array.split(''); str = true; } // add unicode values
@@ -18,13 +19,14 @@ function foreach(array, callback, dynamiclength, callscope) {
 	scope = (callscope === x) ? array : callscope;
 	
 	// MDN forEach syntax: arr.forEach(callback(currentValue [, index [, array]])[, thisArg])
-	// add another parameter 'iterations'?
+	// Ours: foreach(value, callback(currentValue [, index [, array [, iterations]]])[, dynamiclength][, thisArg])
+	
 	for (; i < (dynamiclength ? array.length : len); i++,j++) {
-							
+		 /// if (j >= limit) { console.warn('Limit reached!'); break}
 		 value = callback.call(scope, (num ? i : array[i]), i, array, j); // changing `array[i]` to `(num ? i : array[i])` strangely makes iteration ~6x faster for numbers
 
 		 if (value === false) {break} else
-		 if (value === true) {continue} else
+		 if (value === true) {continue} else 	
 		 if (typeof value === 'number') {
 			 i+= value;
 		 } else
