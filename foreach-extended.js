@@ -1,4 +1,5 @@
 foreach.version = "1.2.3";
+foreach.maxIterations = null;
 
 function foreach(array, callback, dynamiclength, callscope) { 
 
@@ -6,7 +7,7 @@ function foreach(array, callback, dynamiclength, callscope) {
 	// At present, `undefined`, `false`, `0`, `null`, `NaN`, and `''` do not make sense being iterable values.
 	if (typeof callback !== 'function') { throw new TypeError(callback + ' is not a function!'); }
 	
-	var i=0;
+	var i=0,j=0;
 	var len = (array === true) ? 1 : array.length || 0; // iterator
 	var str, value, scope, x, num;
 
@@ -18,9 +19,9 @@ function foreach(array, callback, dynamiclength, callscope) {
 	
 	// MDN forEach syntax: arr.forEach(callback(currentValue [, index [, array]])[, thisArg])
 	// add another parameter 'iterations'?
-	for (; i < (dynamiclength ? array.length : len); i++) {
+	for (; i < (dynamiclength ? array.length : len); i++,j++) {
 							
-		 value = callback.call(scope, (num ? i : array[i]), i, array); // changing `array[i]` to `(num ? i : array[i])` strangely makes iteration ~6x faster for numbers
+		 value = callback.call(scope, (num ? i : array[i]), i, array, j); // changing `array[i]` to `(num ? i : array[i])` strangely makes iteration ~6x faster for numbers
 
 		 if (value === false) {break} else
 		 if (value === true) {continue} else
