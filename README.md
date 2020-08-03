@@ -70,7 +70,7 @@ foreach(4000000, function(v){ if (v > this-3) { console.log('!', v); } });
 console.timeEnd('foreach');
 // ! 3999998
 // ! 3999999
-// foreach: 53.448974609375ms
+// foreach: 53.448974609375ms (yup, its quite fast)
 ```
 
 Breaking out of loops:
