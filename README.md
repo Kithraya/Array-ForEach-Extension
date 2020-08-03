@@ -1,5 +1,5 @@
 # foreach
-Helper function `foreach` with extended functionality.
+Helper function `foreach` with massively extended functionality.
 
 ### Syntax: 
 ```javascript
