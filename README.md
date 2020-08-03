@@ -10,7 +10,7 @@ Simplified: foreach(array, callback([value [, index [, self [, iterations]]]])[,
 ```javascript
 // Examples:
 
-foreach(['A','B','C'], function() { console.log(1) }); // 1 1 1
+foreach( 7 , function() { console.log(1) }); // 1 1 1 1 1 1 1
 
 foreach([1,2,3], function(value, index, self, iterations) { 
     console.log(this, value, index, self, iterations); 
