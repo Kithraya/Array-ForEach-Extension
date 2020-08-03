@@ -48,8 +48,9 @@ console.log(k); // [1,2,3,"0","1","2"]
 
 var k = foreach([1,2,3], function(v,index) {
    this.push( String(index) );
-   if (index > 4) { return false } // [1,2,3,"0","1","2","3","4","5"]
+   if (index > 4) { return false } 
 }, true);
+console.log(k); // [1,2,3,"0","1","2","3","4","5"]
 ```
 
 ##### foreach() also loops through numbers and strings:
