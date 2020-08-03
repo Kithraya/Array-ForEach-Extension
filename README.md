@@ -41,7 +41,7 @@ foreach ( document.querySelectorAll('div'), function(value,index,self,count) {
 
 ```javascript
 
-foreach ( 40, function(value, index, self, count) { console.log(value,index,self,count); });
+foreach ( 40 , function(value, index, self, count) { console.log(value,index,self,count); });
 
 // 0, 0, 40, 0 
 // 1, 1, 40, 1 
@@ -53,21 +53,19 @@ foreach ( 40, function(value, index, self, count) { console.log(value,index,self
 ```
 For numbers, `value` is the same as `index`. 
 
-You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function. Returning `true` or `undefined` is equivalent to the `continue` statement.
+You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
 
 ```javascript
-foreach ( 40, function ( v, i, s, count ) {
-  if (i === 2) { return true }
+foreach ( 40 , function ( v, i, s, count ) {
   if (i === 20) { return false }
-  console.log(v, i, s, count);
+  console.log(v,i,s,count); 
 });
 
 // 0, 0, 40, 0
-// 1, 1, 40, 1  
-// 3, 3, 40, 2 
+// 1, 1, 40, 1
 // ...
-// 19, 19, 40, 18
-// 20, 20, 40, 19
+// 18, 18, 40, 18
+// 19, 19, 40, 19
 ```
 
-You may be wondering what the point of 'count' is. You can jump to any point in your `foreach` loop by returning specific values:
+ You may be wondering what the point of `count` is. Returning `true` or `undefined` is equivalent to the `continue` statement.
