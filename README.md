@@ -99,14 +99,14 @@ console.log(k); // [1,2,3,"0","1","2","3","4","5"]
 
 ```javascript
 
-foreach ( 40 , function(value, index, self, count) { console.log(value,index,self,count,this); });
+foreach ( 40 , function(value, index, self, count) { console.log(this,value,index,self,count); });
 
-// 0, 0, 40, 0, 40
-// 1, 1, 40, 1, 40
-// 2, 2, 40, 2, 40
+// 40, 0, 0, 40, 0
+// 40, 1, 1, 40, 1
+// 40, 2, 2, 40, 2
 // ...
-// 38, 38, 40, 38, 40
-// 39, 39, 40, 39, 40
+// 40, 38, 38, 40, 38
+// 40, 39, 39, 40, 39
 
 ```
 For numbers, `value` is always the same as `index`. 
