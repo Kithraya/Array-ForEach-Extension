@@ -61,6 +61,7 @@ foreach(false, function(v,i) { console.log('this ran!') }); // ▯
 `Foreach` always returns the set you gave it after your function iterates over it. **For falsy sets, `foreach` returns `undefined`**.
 ```javascript
 var k;
+
 k = foreach('ABC', function(){}); console.log(k); // 'ABC'
 k = foreach(400, function(){}); console.log(k); // 400
 k = foreach([1,2,3], function(i){}); console.log(k); // [1,2,3]
