@@ -13,20 +13,20 @@ Simplified: foreach(array, callback([value [, index [, self [, iterations]]]])[,
 foreach([1,2,3], function() { console.log(1) }); // 1 1 1
 
 foreach([1,2,3], function(value, index, self, iterations) { 
-    console.log(value, index, self, iterations, this); 
+    console.log(value, index, self, iterations); 
 });
 
-// 1, 0, [1,2,3], 0, [1,2,3]
-// 2, 1, [1,2,3], 1, [1,2,3]
-// 3, 2, [1,2,3], 2, [1,2,3]
+// 1, 0, [1,2,3], 0
+// 2, 1, [1,2,3], 1
+// 3, 2, [1,2,3], 2
 
 // assuming there are only 2 'div's on the page:
-foreach ( document.querySelectorAll('div'), function(value,index,self,count) {
-   console.log(value, index, self, count, this);
+foreach ( document.querySelectorAll('div'), function(value, index, self, count) {
+   console.log(this, value, index, self, count);
 });
 
-// <div></div>, 0, NodeList(2), 0, NodeList(2)
-// <div></div>, 1, NodeList(2), 1, NodeList(2)
+// NodeList(2), <div></div>, 0, NodeList(2), 0
+// NodeList(2), <div></div>, 1, NodeList(2), 1
 ```
 
 You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
