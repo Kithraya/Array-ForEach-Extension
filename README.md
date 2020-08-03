@@ -12,43 +12,36 @@ foreach(array, callback(value [, index [, self [, iterations]]])[, dynamiclength
 
 // example
 
-foreach(['X','Y','Z'], function(value, index, self, iterations) {
-  
-  console.log(value, index, self, iterations, this); 
-  
-  // 'X', 0, ['X','Y','Z'], 0, ['X','Y','Z']
-  // 'Y', 1, ['X','Y','Z'], 1, ['X','Y','Z']
-  // 'Z', 2, ['X','Y','Z'], 2, ['x','Y','Z']
-  
+foreach(['X','Y','Z'], function(value, index, self, iterations) { 
+   console.log(value, index, self, iterations, this);
 });
+
+// 'X', 0, ['X','Y','Z'], 0, ['X','Y','Z']
+// 'Y', 1, ['X','Y','Z'], 1, ['X','Y','Z']
+// 'Z', 2, ['X','Y','Z'], 2, ['x','Y','Z']
+
 
 // assuming there are only 2 'div's on the page:
 foreach ( document.querySelectorAll('div'), function(value,index,self,count) {
-		
-  console.log(value, index, self, count, this);
-      
-   /* <div></div>, 0, NodeList(2), 0, NodeList(2)
-      <div></div>, 1, NodeList(2), 1, NodeList(2)
-   */
-    
-		
+   console.log(value, index, self, count, this);
 });
 
-
+// <div></div>, 0, NodeList(2), 0, NodeList(2)
+// <div></div>, 1, NodeList(2), 1, NodeList(2)
 ```
 
 ##### foreach() also loops through numbers and strings:
 
 ```javascript
 
-foreach ( 40 , function(value, index, self, count) { console.log(value,index,self,count); });
+foreach ( 40 , function(value, index, self, count) { console.log(value,index,self,count,this); });
 
-// 0, 0, 40, 0 
-// 1, 1, 40, 1 
-// 2, 2, 40, 2
+// 0, 0, 40, 0, 40
+// 1, 1, 40, 1, 40
+// 2, 2, 40, 2, 40
 // ...
-// 38, 38, 40, 38
-// 39, 39, 40, 39
+// 38, 38, 40, 38, 40
+// 39, 39, 40, 39, 40
 
 ```
 For numbers, `value` is always the same as `index`. 
