@@ -6,7 +6,7 @@ Next version adds support for arraylike objects
 ```javascript
 foreach( MULTI {array or iterable value}, FUNCTION {callback(value [, index, [, self [, iterations]]]){} }, BOOLEAN {use_dynamic_length}, MULTI {modify_this_scope});
 
-as in: foreach(array, callback(value [, index [, self [, iterations]]])[, dynamiclength][, thisArg]);
+as in: foreach(array, callback([value [, index [, self [, iterations]]]])[, dynamiclength][, thisArg]);
 ```
 
 ```javascript
