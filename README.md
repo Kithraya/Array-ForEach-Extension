@@ -35,7 +35,7 @@ The `this` scope of your function.
 
 ### value
 
-The first value in your collection that you're iterating over.
+The current value in your collection that you're iterating over.
 
 ### index
 
@@ -66,19 +66,23 @@ foreach ([1,2,3,4,5,6] , function (value, index) {
 // 4, 3
 ```
 You can return other values besides `false`, but we'll get to that later.
- 
 
 Sometimes you want to iterate over a value while conditionally modifying the value itself. By default, the value length is stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the `.length` as you go. But be careful, your loop will run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set.
 
 ```javascript
 // An example with stored length. This is the default functionality.
-var k = foreach([1,2,3], function(v,i) { this.push( String(i) ) }); console.log(k); // [1,2,3,"0","1","2"]
+var k = foreach([1,2,3], function(v,i) { 
+    this.push( String(i) )
+});
+
+console.log(k); // [1,2,3,"0","1","2"]
 
 // An example with dynamic length
 var k = foreach([1,2,3], function(v,index) {
    this.push( String(index) );
    if (index > 4) { return false } 
 }, true);
+
 console.log(k); // [1,2,3,"0","1","2","3","4","5"]
 ```
 #### foreach() also accepts numeric and string values:
