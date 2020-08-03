@@ -19,7 +19,7 @@ function foreach(set, callback, dynamiclength, callscope) {
 	scope = (callscope === x) ? set : callscope;
 	
 	// MDN forEach syntax: arr.forEach(callback(currentValue [, index [, set]])[, thisArg])
-	// Ours: foreach(value, callback(currentValue [, index [, set [, iterations]]])[, dynamiclength][, thisArg])
+	// Ours: foreach(set, callback(currentValue [, index [, set [, iterations]]])[, dynamiclength][, thisArg])
 	
 	for (; i < (dynamiclength ? set.length : len); i++) {
 		 /// if (j >= limit) { console.warn('Limit reached!'); break}
