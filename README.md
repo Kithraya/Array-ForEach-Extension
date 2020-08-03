@@ -60,11 +60,13 @@ Useful if you're jumping back and forth between indexes, but want to make sure t
 
 `foreach` returns your collection after it has finished looping over it. For falsy collections, `foreach` does not execute, and returns `undefined`.
 
-Foreach can be used just like a regular `for` loop:
+Foreach can be used just like regular `for` loops:
 
 ```javascript
 console.time('foreach');
+
 foreach(4000000, function(v){ if (v > this-3) { console.log('!', v); } });
+
 console.timeEnd('foreach');
 // ! 3999998
 // ! 3999999
