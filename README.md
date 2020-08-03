@@ -84,4 +84,4 @@ foreach ( 40 , function ( v, i, s, count ) {
  // 4, 4, 7, 3
  // 6, 6, 7, 5
  ```
-Note that `count` is not updated whenever you return `continue` or `true`, as `foreach` will assume that you skipped over executing your function. If you simply return without specifying a value, `count` is updated as well.
+Note that `count` is not updated whenever you return `'continue'` or `true`, as `foreach` will assume that you skipped over executing your function. If you simply return without specifying a value, `count` is updated as well.
