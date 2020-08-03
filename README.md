@@ -38,13 +38,7 @@ var s = foreach([6,5,4], function(v, i) {
 console.log(s); // [0,0,0]
 
 
-foreach('ABC', function(v, i, s) {
-    console.log(v,i,s);
-});
-
-// A, 0, ABC
-// B, 1, ABC
-// C, 2, ABC
+console.log(foreach(false), foreach(0), foreach(NaN), foreach(null), foreach(''), foreach(undefined)); // all `undefined`
 ```
 
 ### this
@@ -74,7 +68,7 @@ Useful if you're jumping back and forth between indexes, but want to make sure t
 
 -----
 
-You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
+#### You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
 
 ```javascript
 foreach ([1,2,3,4,5,6] , function (value, index) {
