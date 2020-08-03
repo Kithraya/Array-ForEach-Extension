@@ -66,6 +66,7 @@ Useful if you're jumping back and forth between indexes, but want to make sure t
 
 `foreach` returns your collection after it has finished looping over it. For falsy collections, `foreach` does not execute, and returns `undefined`.
 
+Breaking out of loops:
 -----
 
 #### You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
