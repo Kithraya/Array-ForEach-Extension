@@ -47,7 +47,7 @@ The `this` scope of your function. Except for string collections, `this` scope i
 
 #### value
 
-The current value in your collection that you're iterating over.
+The current value in your collection that you're iterating over. For iterating numbers, `value` is always the same as `index`.
 
 #### index
 
@@ -69,7 +69,7 @@ Useful if you're jumping back and forth between indexes, but want to make sure t
 Breaking out of loops:
 -----
 
-#### You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
+You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
 
 ```javascript
 foreach ([1,2,3,4,5,6] , function (value, index) {
@@ -102,22 +102,9 @@ Note that `count` is not updated whenever you return `'continue'` or `true`, as 
 
 #### For numbers, `value` is always the same as `index`.
 
-```javascript
-
-foreach ( 40 , function(value, index, self, count) { console.log(this,value,index,self,count); });
-
-// 40, 0, 0, 40, 0
-// 40, 1, 1, 40, 1
-// 40, 2, 2, 40, 2
-// ...
-// 40, 38, 38, 40, 38
-// 40, 39, 39, 40, 39
-
-```
-
 Dynamic Iteration:
 -----
-Sometimes you want to iterate over a value while conditionally modifying the value itself. By default, the value length is stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the `.length` as you go. But be careful, your loop will run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set.
+Sometimes you want to iterate over a value while conditionally modifying the value itself. By default, the value length is stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the `.length` as you go. But be careful, your loop will run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set as a failsafe. Dynamic iteration is not possible on numbers, as `.length` will be initialized to the number given.
 
 ```javascript
 // An example with stored length. This is the default functionality.
@@ -138,7 +125,7 @@ console.log(k); // [1,2,3,"0","1","2","3","4","5"]
 
 ### More on strings:
 
-As strings are immutable, `foreach` internally splits strings to array form, and sets the `this` scope to that array, for easy manipulation.
+As strings are immutable, `foreach` internally splits strings to array form, and sets `this` as that internal array, for easy manipulation.
 
 ```javascript
 var str = foreach('ABCDE', function(v,i,s) {
