@@ -121,6 +121,6 @@ var str = foreach('ABCDE', function(v,i,s) {
 
 console.log(str); // A0B1C2D3E4
 ```
-Once `foreach` is done iterating over the string, it internally joins the array back to a string and returns that string.
+Once `foreach` is done iterating over the string in array form, it internally `joins` the array back into a string and returns that string.
 
 At the moment, do not use `foreach` for strings having surrogate pairs, as foreach splits / joins by `''` which defaults to UTF-16 codeunits.
