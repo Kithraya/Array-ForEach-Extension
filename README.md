@@ -28,7 +28,13 @@ foreach ( document.querySelectorAll('div'), function(value,index,self,count) {
 // <div></div>, 0, NodeList(2), 0, NodeList(2)
 // <div></div>, 1, NodeList(2), 1, NodeList(2)
 ```
+Note that all the callback parameters are optional.
+```javascript
+foreach([1,2,3], function() {
+   console.log(this); // [1,2,3], [1,2,3], [1,2,3]
+});
 
+```
 ##### foreach() also loops through numbers and strings:
 
 ```javascript
