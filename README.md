@@ -60,7 +60,7 @@ Useful if you're jumping back and forth between indexes, but want to make sure t
 
 `foreach` returns your collection after it has finished looping over it. For falsy collections, `foreach` does not execute, and returns `undefined`.
 
-Foreach can be used like a regular `for` loop:
+Foreach can be used just like a regular `for` loop:
 
 ```javascript
 console.time('foreach');
