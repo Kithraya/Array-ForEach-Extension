@@ -13,7 +13,7 @@ function foreach(set, callback, dynamiclength, callscope) {
 	/// var limit = foreach.maxIterations || Infinity;
 	var self = set;
 
-	if (typeof set === 'number') { dynamiclength = false; len = set; num = true } else
+	if (typeof set === 'number') { dynamiclength = !(num = !!(len = set)); } else // >:)
 	if (typeof set === 'string') { str = set = set.split(''); } // TODO: add full Unicode support (splitting by '' does not work for surrogate pairs);
  
 	scope = (callscope === x) ? set : callscope;
