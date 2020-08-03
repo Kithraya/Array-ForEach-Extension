@@ -18,18 +18,16 @@ foreach([1,2,3], function() {
 });
 
 var xyz = ['X','Y','Z'];
-foreach( xyz , function(value, index, self, iterations) { 
+foreach( xyz , function(value, index, self, count) { 
    if (!index) { console.log( (xyz === self) && (self === this) ) } // true
-   console.log(value, index, self, iterations);
+   console.log(value, index, self, count);
 });
 
 // 'X', 0, ['X','Y','Z'], 0
 // 'Y', 1, ['X','Y','Z'], 1
 // 'Z', 2, ['X','Y','Z'], 2
-```
-`(xyz === self) && (self === this)` is always `true`, unless `xyz` is a string.
 
-``javascript
+// Without changing the `this` scope, `array` === `self` === `this` is always `true` except for strings.
 
 // assuming there are only 2 'div's on the page:
 foreach ( document.querySelectorAll('div'), function(value,index,self,count) {
@@ -39,7 +37,6 @@ foreach ( document.querySelectorAll('div'), function(value,index,self,count) {
 // <div></div>, 0, NodeList(2), 0
 // <div></div>, 1, NodeList(2), 1
 ```
-Except for strings, `this` === `self` === `array`.
 
 You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
 
