@@ -31,7 +31,7 @@ foreach ( document.querySelectorAll('div'), function(value, index, self, count) 
 
 ### this
 
-The `this` scope of your function
+The `this` scope of your function.
 
 ### value
 
@@ -45,13 +45,12 @@ The index that you're currently at in your collection. `foreach` allows you to j
 
 Your collection.
 
-#### count / iterations
-
------
+### count / iterations
 
 The number of times that your function has executed. Unlike index, this value cannot be modified. 
 Useful if you're jumping back and forth between indexes, but want to make sure that your function runs a specific number of times.
 
+-----
 
 You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
 
