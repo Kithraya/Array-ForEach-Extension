@@ -37,7 +37,7 @@ foreach([1,2,3], function() {
 You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
 
 ```javascript
-foreach ([1,2,3,4,5] , function (value, index) {
+foreach ([1,2,3,4,5,6] , function (value, index) {
    console.log(value, index);
    if (value === 4) { return false }
 });
