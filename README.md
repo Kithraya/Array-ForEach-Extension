@@ -41,15 +41,8 @@ foreach ( document.querySelectorAll('div'), function(value, index, self, count) 
 // NodeList(2), <div></div>, 0, NodeList(2), 0
 // NodeList(2), <div></div>, 1, NodeList(2), 1
 
-
-var s = foreach([6,5,4], function(v, i) {
-    this[i] = 0;
-}); 
-console.log(s); // [0,0,0]
-
-console.log(foreach(false), foreach(0), foreach(NaN), foreach(null), foreach(''), foreach(undefined)); // all `undefined`
 ```
-Foreach works on strings:
+Foreach also works on strings:
 ```javascript
 
 foreach('ABC', function(v,i,s) {
@@ -61,10 +54,20 @@ foreach('ABC', function(v,i,s) {
 // C, 2, ABC
 
 ```
+Foreach always returns the set you give it after your function iterates over it. For falsy sets, foreach returns `undefined`.
+```javascript
+var k;
+k = foreach('ABC', function(){}); console.log(k); // 'ABC'
+k = foreach(400, function(){}); console.log(k); // 400
+k = foreach([1,2,3], function(i){}); console.log(k); // [1,2,3]
+k = foreach([6,5,4], function(v, i) { this[i] = 0; }); console.log(k); // [0,0,0]
+
+console.log(foreach(false), foreach(0), foreach(NaN), foreach(null), foreach(''), foreach(undefined)); // all `undefined`
+```
 
 #### this
 
-The `this` scope of your function. Except for string sets, the `this` scope is always set as your set. For strings, `this` is set to an array form of the string.
+The `this` scope of your function. Except for `String` sets, the `this` scope is always set as your set. For strings, `this` is set to an array form of said string.
 
 #### value
 
@@ -76,7 +79,7 @@ The index that you're currently at in your set. `foreach` allows you to jump to 
 
 #### self
 
-Your collection.
+Your set.
 
 #### count / iterations
 
@@ -84,8 +87,6 @@ The number of times that your callback function has executed. Unlike index, this
 Useful if you're jumping back and forth between indexes, but want to make sure that your function only runs a specific number of times.
 
 -----
-
-`foreach` returns your set after it has finished looping over it. For falsy sets, `foreach` does not execute, and returns `undefined`.
 
 Breaking out of loops:
 -----
@@ -121,11 +122,10 @@ You can return other values besides `false`. Returning `true` or the string `'co
  ```
 Note that `count` is not updated whenever you return `'continue'` or `true`, as `foreach` will assume that you skipped over executing your function. If you simply return without specifying a value, `count` is updated as well.
 
-#### For numbers, `value` is always the same as `index`.
 
 Dynamic Iteration:
 -----
-Sometimes you want to iterate over a value while conditionally modifying the value itself. By default, your set's `.length` is created / stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the `.length` as you go. But be careful, your loop can run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set as a failsafe. Dynamic iteration has no effect on numbers, as set `.length` will be initialized to the number given.
+Sometimes you want to iterate over a value while conditionally modifying the value itself. By default, your set's `.length` is created / stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the `.length` as you go. But be careful, your loop can run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set as a failsafe. Dynamic iteration has no effect on numbers, as `.length` will be initialized to the number given.
 
 ```javascript
 // An example with stored length. This is the default functionality.
