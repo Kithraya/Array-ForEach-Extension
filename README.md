@@ -51,7 +51,7 @@ foreach ( 40 , function(value, index, self, count) { console.log(value,index,sel
 // 39, 39, 40, 39
 
 ```
-For numbers, `value` is the same as `index`. 
+For numbers, `value` is always the same as `index`. 
 
 You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
 
@@ -68,4 +68,20 @@ foreach ( 40 , function ( v, i, s, count ) {
 // 19, 19, 40, 19
 ```
 
- You may be wondering what the point of `count` is. Returning `true` or `undefined` is equivalent to the `continue` statement.
+ You can return other values besides 'false'. Returning `true` or the string `'continue'` is equivalent to the `continue` statement.
+ 
+ ```javascript
+ 
+ foreach (7, function(v,i,s,count) { 
+     if (i === 2) { return true } 
+     if (i === 5) { return }
+     console.log(v,i,s,count);
+  });
+ 
+ // 0, 0, 7, 0
+ // 1, 1, 7, 1
+ // 3, 3, 7, 2
+ // 4, 4, 7, 3
+ // 6, 6, 7, 5
+ ```
+Note that `count` is not updated whenever you return `continue` or `true`, as `foreach` will assume that you skipped over executing your function. If you simply return without specifying a value, `count` is also updated.
