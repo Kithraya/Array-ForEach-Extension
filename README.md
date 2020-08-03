@@ -122,9 +122,11 @@ var k = foreach([1,2,3], function(v,index) {
 
 console.log(k); // [1,2,3,"0","1","2","3","4","5"]
 
-foreach(400, function(v) {
+var k = foreach(400, function(v) {
     console.log( this-v ); // 400, 399, 398, ..., 2, 1
 }, true); // useless
+
+console.log(k); // 400
 ```
 
 ### More on strings:
