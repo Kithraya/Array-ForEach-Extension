@@ -10,7 +10,10 @@ Simplified: foreach(array, callback([value [, index [, self [, iterations]]]])[,
 ```javascript
 // Examples:
 
-foreach( 7 , function() { console.log(1) }); // 1 1 1 1 1 1 1
+foreach( 3 , function() { console.log(this, this-1, 1); });
+// 3 2 1
+// 3 2 1
+// 3 2 1
 
 foreach([1,2,3], function(value, index, self, iterations) { 
     console.log(this, value, index, self, iterations); 
@@ -37,7 +40,7 @@ console.log(s); // [0,0,0]
 
 ### this
 
-The `this` scope of your function.
+The `this` scope of your function. Except for string collections, `this` scope is always set as your collection.
 
 ### value
 
