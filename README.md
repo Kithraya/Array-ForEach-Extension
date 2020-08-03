@@ -53,7 +53,7 @@ foreach('ABC', function(v,i,s) {
 // B, 1, ABC
 // C, 2, ABC
 ```
-`true` is a special case. Give the set `true`, and your function will run, but only once.
+`true` is a special case. Give the set `true`, and your function will run, but only once. ##### If your set is falsy, foreach will not run.
 ```javascript
 foreach(true, function(v,i) { console.log(v, i, this,+this) }); // undefined, 0, true, 1
 ```
