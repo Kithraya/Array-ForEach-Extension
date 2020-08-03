@@ -29,7 +29,6 @@ console.timeEnd('foreach');
 // ! 3999998
 // ! 3999999
 // foreach: 53.448974609375ms (yup, its quite fast)
-```
 
 // assuming there are only 2 'div's on the page:
 foreach ( document.querySelectorAll('div'), function(value, index, self, count) {
