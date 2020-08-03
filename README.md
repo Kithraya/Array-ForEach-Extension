@@ -114,7 +114,8 @@ foreach ( 40 , function(value, index, self, count) { console.log(this,value,inde
 
 ```
 
-
+Dynamic Iteration:
+-----
 Sometimes you want to iterate over a value while conditionally modifying the value itself. By default, the value length is stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the `.length` as you go. But be careful, your loop will run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set.
 
 ```javascript
