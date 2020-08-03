@@ -12,16 +12,14 @@ foreach(array, callback(value [, index [, self [, iterations]]])[, dynamiclength
 
 // example
 
-foreach(['Z','Y','X'], function(value, index, self, iterations) {
+foreach(['X','Y','Z'], function(value, index, self, iterations) {
   
-  console.log(value, index, self, iterations); 
+  console.log(value, index, self, iterations, this); 
   
-  // 'Z', 0, ['Z','Y','X'], 0
-  // 'Y', 1, ['Z','Y','X'], 1
-  // 'X', 2, ['Z','Y','X'], 2
+  // 'X', 0, ['X','Y','Z'], 0, ['X','Y','Z']
+  // 'Y', 1, ['X','Y','Z'], 1, ['X','Y','Z']
+  // 'Z', 2, ['X','Y','Z'], 2, ['x','Y','Z']
   
-  console.log(this); // ['Z','Y','X']
-
 });
 
 // assuming there are only 2 'div's on the page:
