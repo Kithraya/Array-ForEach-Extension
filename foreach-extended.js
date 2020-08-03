@@ -3,7 +3,7 @@ foreach.version = "1.2.4.5";
 				 
 function foreach(set, callback, dynamiclength, callscope) { 
 
-	if (!set) { return } // Return `undefined` if falsy. At present, falsy values do not make sense being iterable values.
+	if (!set) { return } // Return `undefined` if falsy. At present, falsy values do not make sense being iterable.
 	if (typeof callback !== 'function') { throw new TypeError(callback + ' is not a function!') }
 	
 	var i=0,j=0; // index, count
