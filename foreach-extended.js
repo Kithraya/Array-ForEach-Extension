@@ -1,5 +1,5 @@
 foreach.version = "1.2.4.5";
-foreach.maxIterations = Infinity;
+/// foreach.maxIterations = Infinity;
 				 
 function foreach(set, callback, dynamiclength, callscope) { 
 
@@ -10,7 +10,7 @@ function foreach(set, callback, dynamiclength, callscope) {
 	var len = (set === true) ? 1 : set.length || 0; // .length
 	
 	var str, value, scope, x, num;
-	var limit = foreach.maxIterations || Infinity;
+	/// var limit = foreach.maxIterations || Infinity;
 	var self = set;
 
 	if (typeof set === 'number') { dynamiclength = false; len = set; num = true } else
