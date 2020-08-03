@@ -3,9 +3,9 @@ Helper function `foreach` with massively extended functionality.
 
 ### Syntax: 
 ```javascript
-foreach( MULTI set :iterable value:, FUNCTION callback([value [, index [, self [, iterations]]]]) {...} , BOOLEAN use_dynamic_length, MULTI modify_this_scope);
+foreach( MULTI set (any iterable value), FUNCTION callback([value [, index [, self [, iterations]]]]) {...} , BOOLEAN use_dynamic_length, MULTI modify_this_scope);
 
-Simplified: foreach(set, callback([value [, index [, self [, iterations]]]])[, dynamiclength][, thisArg]);
+=> foreach(set, callback([value [, index [, self [, iterations]]]])[, dynamiclength][, thisArg]);
 ```
 ```javascript
 // Examples:
@@ -52,15 +52,19 @@ foreach('ABC', function(v,i,s) {
 // A, 0, ABC
 // B, 1, ABC
 // C, 2, ABC
-
 ```
-Foreach always returns the set you give it after your function iterates over it. For falsy sets, foreach returns `undefined`.
+`true` is a special case. Give the set `true`, and your function will run, but only once.
+```javascript
+foreach(true, function(v,i) { console.log(v, i, this,+this) }); // undefined, 0, true, 1
+```
+`Foreach` always returns the set you gave it after your function iterates over it. For falsy sets, `foreach` returns `undefined`.
 ```javascript
 var k;
 k = foreach('ABC', function(){}); console.log(k); // 'ABC'
 k = foreach(400, function(){}); console.log(k); // 400
 k = foreach([1,2,3], function(i){}); console.log(k); // [1,2,3]
-k = foreach([6,5,4], function(v, i) { this[i] = 0; }); console.log(k); // [0,0,0]
+k = foreach([6,5,4], function(v,i) { this[i] = 0; }); console.log(k); // [0,0,0]
+k = foreach(true, function(v,i){}); console.log(k); // true
 
 console.log(foreach(false), foreach(0), foreach(NaN), foreach(null), foreach(''), foreach(undefined)); // all `undefined`
 ```
