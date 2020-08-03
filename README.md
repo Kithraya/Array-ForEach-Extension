@@ -1,6 +1,5 @@
 # foreach
 Helper function `foreach` with extended functionality.
-Next version adds support for arraylike objects
 
 ### Syntax: 
 ```javascript
