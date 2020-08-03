@@ -18,16 +18,16 @@ foreach([1,2,3], function(value, index, self, iterations) {
 // 2, 1, [1,2,3], 1
 // 3, 2, [1,2,3], 2
 ```
-Foreach can be used just like regular `for` loops:
+Foreach can be used just like regular `for` loops. For `Number` sets, `value` is always the same as `index`.
 
 ```javascript
 console.time('foreach');
 
-foreach(4000000, function(v){ if (v > this-3) { console.log('!', v); } });
+foreach(4000000, function(v,i){ if (v > this-3) { console.log('!', v, i); } });
 
 console.timeEnd('foreach');
-// ! 3999998
-// ! 3999999
+// ! 3999998, 3999998
+// ! 3999999, 3999999
 // foreach: 53.448974609375ms (yup, its quite fast)
 ```
 
