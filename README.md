@@ -29,7 +29,10 @@ console.timeEnd('foreach');
 // ! 3999998
 // ! 3999999
 // foreach: 53.448974609375ms (yup, its quite fast)
+```
 
+Foreach works on arraylike objects:
+```javascript
 // assuming there are only 2 'div's on the page:
 foreach ( document.querySelectorAll('div'), function(value, index, self, count) {
    console.log(this, value, index, self, count);
