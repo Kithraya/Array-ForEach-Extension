@@ -45,7 +45,7 @@ The current value in your collection that you're iterating over. For number iter
 
 #### index
 
-The index that you're currently at in your collection. `foreach` allows you to jump to a specific index by returning custom values.
+The index that you're currently at in your collection. `foreach` allows you to jump to a specific index by returning certain values from your callback function.
 
 #### self
 
@@ -53,8 +53,8 @@ Your collection.
 
 #### count / iterations
 
-The number of times that your function has executed. Unlike index, this value cannot be modified. 
-Useful if you're jumping back and forth between indexes, but want to make sure that your function runs a specific number of times.
+The number of times that your callback function has executed. Unlike index, this value cannot be modified. 
+Useful if you're jumping back and forth between indexes, but want to make sure that your function only runs a specific number of times.
 
 -----
 
