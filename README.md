@@ -134,7 +134,7 @@ As strings are immutable, `foreach` internally splits strings to array form, and
 ```javascript
 var str = foreach('ABCDE', function(v,i,s) {
    console.log(v,i,s); 
-   if (!i) { console.log(this) } // ["A","B","C","D","E"]
+   if (!i) { console.log(this, this[i]) } // ["A","B","C","D","E"], "A"
    this[i] += i;
 });
 
