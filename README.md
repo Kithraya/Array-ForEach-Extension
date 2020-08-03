@@ -43,11 +43,11 @@ console.log(foreach(false), foreach(0), foreach(NaN), foreach(null), foreach('')
 
 #### this
 
-The `this` scope of your function. Except for string collections, `this` scope is always set as your collection. For strings, `this` is set to the array form of the string.
+The `this` scope of your function. Except for string collections, the `this` scope is always set as your collection. For strings, `this` is set to an array form of the string.
 
 #### value
 
-The current value in your collection that you're iterating over. For iterating numbers, `value` is always the same as `index`.
+The current value in your collection that you're iterating over. For number iterations, `value` is always the same as `index`.
 
 #### index
 
