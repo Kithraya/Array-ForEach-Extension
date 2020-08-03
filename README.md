@@ -3,9 +3,9 @@ Helper function `foreach` with massively extended functionality.
 
 ### Syntax: 
 ```javascript
-foreach( MULTI array or iterable value, FUNCTION callback([value [, index [, self [, iterations]]]]) {...} , BOOLEAN use_dynamic_length, MULTI modify_this_scope);
+foreach( MULTI set :iterable value:, FUNCTION callback([value [, index [, self [, iterations]]]]) {...} , BOOLEAN use_dynamic_length, MULTI modify_this_scope);
 
-Simplified: foreach(array, callback([value [, index [, self [, iterations]]]])[, dynamiclength][, thisArg]);
+Simplified: foreach(set, callback([value [, index [, self [, iterations]]]])[, dynamiclength][, thisArg]);
 ```
 ```javascript
 // Examples:
@@ -37,15 +37,15 @@ console.log(foreach(false), foreach(0), foreach(NaN), foreach(null), foreach('')
 
 #### this
 
-The `this` scope of your function. Except for string collections, the `this` scope is always set as your collection. For strings, `this` is set to an array form of the string.
+The `this` scope of your function. Except for string sets, the `this` scope is always set as your set. For strings, `this` is set to an array form of the string.
 
 #### value
 
-The current value in your collection that you're iterating over. For number iterations, `value` is always the same as `index`.
+The current value in your set that you're iterating over. For number iterations, `value` is always the same as `index`.
 
 #### index
 
-The index that you're currently at in your collection. `foreach` allows you to jump to a specific index by returning certain values from your callback function.
+The index that you're currently at in your set. `foreach` allows you to jump to a specific index by returning certain values from your callback function.
 
 #### self
 
@@ -58,7 +58,7 @@ Useful if you're jumping back and forth between indexes, but want to make sure t
 
 -----
 
-`foreach` returns your collection after it has finished looping over it. For falsy collections, `foreach` does not execute, and returns `undefined`.
+`foreach` returns your set after it has finished looping over it. For falsy sets, `foreach` does not execute, and returns `undefined`.
 
 Foreach can be used just like regular `for` loops:
 
@@ -111,7 +111,7 @@ Note that `count` is not updated whenever you return `'continue'` or `true`, as 
 
 Dynamic Iteration:
 -----
-Sometimes you want to iterate over a value while conditionally modifying the value itself. By default, the value `.length` is created / stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the `.length` as you go. But be careful, your loop can run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set as a failsafe. Dynamic iteration has no effect on numbers, as `.length` will be initialized to the number given.
+Sometimes you want to iterate over a value while conditionally modifying the value itself. By default, your set's `.length` is created / stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the `.length` as you go. But be careful, your loop can run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set as a failsafe. Dynamic iteration has no effect on numbers, as set `.length` will be initialized to the number given.
 
 ```javascript
 // An example with stored length. This is the default functionality.
