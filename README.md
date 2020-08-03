@@ -17,6 +17,19 @@ foreach([1,2,3], function(value, index, self, iterations) {
 // 1, 0, [1,2,3], 0
 // 2, 1, [1,2,3], 1
 // 3, 2, [1,2,3], 2
+```
+Foreach can be used just like regular `for` loops:
+
+```javascript
+console.time('foreach');
+
+foreach(4000000, function(v){ if (v > this-3) { console.log('!', v); } });
+
+console.timeEnd('foreach');
+// ! 3999998
+// ! 3999999
+// foreach: 53.448974609375ms (yup, its quite fast)
+```
 
 // assuming there are only 2 'div's on the page:
 foreach ( document.querySelectorAll('div'), function(value, index, self, count) {
@@ -59,19 +72,6 @@ Useful if you're jumping back and forth between indexes, but want to make sure t
 -----
 
 `foreach` returns your set after it has finished looping over it. For falsy sets, `foreach` does not execute, and returns `undefined`.
-
-Foreach can be used just like regular `for` loops:
-
-```javascript
-console.time('foreach');
-
-foreach(4000000, function(v){ if (v > this-3) { console.log('!', v); } });
-
-console.timeEnd('foreach');
-// ! 3999998
-// ! 3999999
-// foreach: 53.448974609375ms (yup, its quite fast)
-```
 
 Breaking out of loops:
 -----
