@@ -41,23 +41,23 @@ console.log(s); // [0,0,0]
 console.log(foreach(false), foreach(0), foreach(NaN), foreach(null), foreach(''), foreach(undefined)); // all `undefined`
 ```
 
-### this
+#### this
 
 The `this` scope of your function. Except for string collections, `this` scope is always set as your collection. For strings, `this` is set to the array form of the string.
 
-### value
+#### value
 
 The current value in your collection that you're iterating over.
 
-### index
+#### index
 
 The index that you're currently at in your collection. `foreach` allows you to jump to a specific index by returning custom values.
 
-### self
+#### self
 
 Your collection.
 
-### count / iterations
+#### count / iterations
 
 The number of times that your function has executed. Unlike index, this value cannot be modified. 
 Useful if you're jumping back and forth between indexes, but want to make sure that your function runs a specific number of times.
