@@ -104,7 +104,7 @@ Note that `count` is not updated whenever you return `'continue'` or `true`, as 
 
 ### Foreach also iterates over strings.
 
-As strings are immutable, `foreach` internally converts strings to array form via `String.split('')`, and sets the `this` scope as that array for easy manipulation.
+As strings are immutable, `foreach` internally splits strings to array form, and sets the `this` scope to that array, for easy manipulation.
 
 ```javascript
 var str = foreach('ABCDE', function(v,i,s) {
@@ -124,6 +124,7 @@ var str = foreach('ABCDE', function(v,i,s) {
 
 console.log(str); // A0B1C2D3E4
 ```
-Once `foreach` is done iterating over the string-array, it internally `joins` the array back into a string and returns that string.
+Once `foreach` is done iterating over the string-array, it internally `joins` the array back into a `String` and returns that string.
 
-At the moment, do not use `foreach` for strings containing surrogate pairs, as foreach splits / joins by `''` which defaults to UTF-16 codeunits, which destroy surrogate pairs.
+#### Caveat for strings:
+For now, do not use `foreach` for strings containing surrogate pairs, as foreach `splits` / `joins` by `''` which defaults to UTF-16 codeunits, which destroy surrogate pairs.
