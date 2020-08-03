@@ -10,11 +10,6 @@ Simplified: foreach(array, callback([value [, index [, self [, iterations]]]])[,
 ```javascript
 // Examples:
 
-foreach( 3 , function() { console.log(this, this-1, 1); });
-// 3 2 1
-// 3 2 1
-// 3 2 1
-
 foreach([1,2,3], function(value, index, self, iterations) { 
     console.log(value, index, self, iterations); 
 });
@@ -36,7 +31,6 @@ var s = foreach([6,5,4], function(v, i) {
     this[i] = 0;
 }); 
 console.log(s); // [0,0,0]
-
 
 console.log(foreach(false), foreach(0), foreach(NaN), foreach(null), foreach(''), foreach(undefined)); // all `undefined`
 ```
@@ -65,6 +59,17 @@ Useful if you're jumping back and forth between indexes, but want to make sure t
 -----
 
 `foreach` returns your collection after it has finished looping over it. For falsy collections, `foreach` does not execute, and returns `undefined`.
+
+Foreach can be used like a regular `for` loop:
+
+```javascript
+console.time('foreach');
+foreach(4000000, function(v){ if (v > this-3) { console.log('!', v); } });
+console.timeEnd('foreach');
+// ! 3999998
+// ! 3999999
+// foreach: 53.448974609375ms
+```
 
 Breaking out of loops:
 -----
