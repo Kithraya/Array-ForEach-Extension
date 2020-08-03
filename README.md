@@ -104,7 +104,7 @@ Note that `count` is not updated whenever you return `'continue'` or `true`, as 
 
 ### Foreach also iterates over strings.
 
-As strings are immutable, `foreach` internally converts any string to array form via `String.split('')`, and sets `this` to that array for easy modification.
+As strings are immutable, `foreach` internally converts strings to array form via `String.split('')`, and sets the `this` scope as that array for easy manipulation.
 
 ```javascript
 var str = foreach('ABCDE', function(v,i,s) {
