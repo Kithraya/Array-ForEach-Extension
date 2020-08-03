@@ -5,7 +5,7 @@ Helper function `foreach` with massively extended functionality.
 ```javascript
 foreach( MULTI array or iterable value, FUNCTION callback([value [, index [, self [, iterations]]]]) {...} , BOOLEAN use_dynamic_length, MULTI modify_this_scope);
 
-Simplified: foreach(array, callback([value [, index [, self [, iterations]]]]), [dynamiclength], [thisArg]);
+Simplified: foreach(array, callback([value [, index [, self [, iterations]]]])[, dynamiclength][, thisArg]);
 ```
 ```javascript
 // Examples:
