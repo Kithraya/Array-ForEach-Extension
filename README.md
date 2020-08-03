@@ -128,6 +128,10 @@ You can return other values besides `false`. Returning `true` or the string `'co
  ```
 Note that `count` is not updated whenever you return `'continue'` or `true`, as `foreach` will assume that you skipped over executing your function. If you simply return without specifying a value, `count` is updated as well.
 
+#### Jumping to specific indexes:
+
+...
+
 
 Dynamic Iteration:
 -----
