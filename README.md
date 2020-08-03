@@ -38,13 +38,14 @@ You can instantly break out of any `foreach` loop at any time by returning `fals
 
 ```javascript
 foreach ([1,2,3,4,5] , function (value, index) {
-  if (value === 4) { return false }
-  console.log(value, index);
+   console.log(value, index);
+   if (value === 4) { return false }
 });
 
 // 1, 0
 // 2, 1
 // 3, 2
+// 4, 3
 ```
 Sometimes you want to iterate over an array while conditionally modifying the array itself. By default, the array length is stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the array length as you go. But be careful, your loop will run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set.
 
