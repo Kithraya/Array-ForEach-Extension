@@ -13,12 +13,12 @@ Simplified: foreach(array, callback([value [, index [, self [, iterations]]]])[,
 foreach([1,2,3], function() { console.log(1) }); // 1 1 1
 
 foreach([1,2,3], function(value, index, self, iterations) { 
-    console.log(value, index, self, iterations); 
+    console.log(this, value, index, self, iterations); 
 });
 
-// 1, 0, [1,2,3], 0
-// 2, 1, [1,2,3], 1
-// 3, 2, [1,2,3], 2
+// [1,2,3], 1, 0, [1,2,3], 0
+// [1,2,3], 2, 1, [1,2,3], 1
+// [1,2,3], 3, 2, [1,2,3], 2
 
 // assuming there are only 2 'div's on the page:
 foreach ( document.querySelectorAll('div'), function(value, index, self, count) {
