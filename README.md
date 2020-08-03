@@ -115,12 +115,12 @@ var k = foreach([1,2,3], function(v,i) {
 console.log(k); // [1,2,3,0,1,2]
 
 // An example with dynamic length
-var k = foreach([1,2,3], function(v,index) {
-   this.push( String(index) );
+var k = foreach([1,2,3], function(v, index) {
+   this.push( index );
    if (index > 4) { return false } 
 }, true);
 
-console.log(k); // [1,2,3,"0","1","2","3","4","5"]
+console.log(k); // [1,2,3,0,1,2,3,4,5]
 
 var k = foreach(400, function(v) {
     console.log( this-v ); // 400, 399, 398, ..., 2, 1
