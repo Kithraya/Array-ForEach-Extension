@@ -68,7 +68,7 @@ foreach ( 40 , function ( v, i, s, count ) {
 // 19, 19, 40, 19
 ```
 
- You can return other values besides 'false'. Returning `true` or the string `'continue'` is equivalent to the `continue` statement.
+ You can return other values besides `false`. Returning `true` or the string `'continue'` is equivalent to calling the `continue` statement.
  
  ```javascript
  
@@ -84,4 +84,4 @@ foreach ( 40 , function ( v, i, s, count ) {
  // 4, 4, 7, 3
  // 6, 6, 7, 5
  ```
-Note that `count` is not updated whenever you return `continue` or `true`, as `foreach` will assume that you skipped over executing your function. If you simply return without specifying a value, `count` is also updated.
+Note that `count` is not updated whenever you return `continue` or `true`, as `foreach` will assume that you skipped over executing your function. If you simply return without specifying a value, `count` is updated as well.
