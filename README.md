@@ -28,12 +28,23 @@ foreach ( document.querySelectorAll('div'), function(value,index,self,count) {
 // <div></div>, 0, NodeList(2), 0, NodeList(2)
 // <div></div>, 1, NodeList(2), 1, NodeList(2)
 ```
-Note that all the callback parameters are optional.
+Note that the callback parameters are optional.
 ```javascript
 foreach([1,2,3], function() {
    console.log(this); // [1,2,3], [1,2,3], [1,2,3]
 });
+```
+You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
 
+```javascript
+foreach ([1,2,3,4,5] , function (value, index) {
+  if (value === 4) { return false }
+  console.log(value, index);
+});
+
+// 1, 0
+// 2, 1
+// 3, 2
 ```
 Sometimes you want to iterate over an array while conditionally modifying the array itself. By default, the array length is stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the array length as you go. But be careful, your loop will run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set.
 
@@ -68,21 +79,6 @@ foreach ( 40 , function(value, index, self, count) { console.log(value,index,sel
 
 ```
 For numbers, `value` is always the same as `index`. 
-
-You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
-
-```javascript
-foreach ( 40 , function ( v, i, s, count ) {
-  if (i === 20) { return false }
-  console.log(v,i,s,count); 
-});
-
-// 0, 0, 40, 0
-// 1, 1, 40, 1
-// ...
-// 18, 18, 40, 18
-// 19, 19, 40, 19
-```
 
  You can return other values besides `false`. Returning `true` or the string `'continue'` is equivalent to calling the `continue` statement.
  
