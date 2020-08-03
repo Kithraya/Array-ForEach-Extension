@@ -47,6 +47,8 @@ foreach ([1,2,3,4,5] , function (value, index) {
 // 3, 2
 // 4, 3
 ```
+You can return other values besides `false`, but we'll get to that later. 
+
 Sometimes you want to iterate over an array while conditionally modifying the array itself. By default, the array length is stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the array length as you go. But be careful, your loop will run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set.
 
 ```javascript
