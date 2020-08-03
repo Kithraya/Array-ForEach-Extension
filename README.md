@@ -12,8 +12,8 @@ Simplified: foreach(array, callback([value [, index [, self [, iterations]]]])[,
 
 foreach([1,2,3], function() { console.log(1) }); // 1 1 1
 
-foreach([1,2,3], function(value, index, self, count) { 
-    console.log(value, index, self, count, this); 
+foreach([1,2,3], function(value, index, self, iterations) { 
+    console.log(value, index, self, iterations, this); 
 });
 
 // 1, 0, [1,2,3], 0, [1,2,3]
