@@ -49,6 +49,18 @@ console.log(s); // [0,0,0]
 
 console.log(foreach(false), foreach(0), foreach(NaN), foreach(null), foreach(''), foreach(undefined)); // all `undefined`
 ```
+Foreach works on strings:
+```javascript
+
+foreach('ABC', function(v,i,s) {
+  console.log(v,i,s);
+});
+
+// A, 0, ABC
+// B, 1, ABC
+// C, 2, ABC
+
+```
 
 #### this
 
