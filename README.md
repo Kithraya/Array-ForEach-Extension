@@ -56,7 +56,7 @@ foreach('ABC', function(v,i,s) {
 `true` is a special case. Give the set `true`, and your function will run, but only once. If your set is falsy, foreach will not run.
 ```javascript
 foreach(true, function(v,i) { console.log(v, i, this,+this) }); // undefined, 0, true, 1
-foreach(false, function(v,i) { console.log('this ran!') }); // ▯
+foreach(false, function(v,i) { console.log('this ran!') }); // /
 ```
 `Foreach` always returns the set you gave it after your function iterates over it. **For falsy sets, `foreach` returns `undefined`**.
 ```javascript
