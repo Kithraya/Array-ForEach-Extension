@@ -9,31 +9,38 @@ as in: foreach(array, callback([value [, index [, self [, iterations]]]]), [dyna
 ```
 
 ```javascript
-// example
+// Examples:
 
-foreach(['X','Y','Z'], function(value, index, self, iterations) { 
-   console.log(value, index, self, iterations, this);
-});
+// Note that the callback parameters are optional.
 
-// 'X', 0, ['X','Y','Z'], 0, ['X','Y','Z']
-// 'Y', 1, ['X','Y','Z'], 1, ['X','Y','Z']
-// 'Z', 2, ['X','Y','Z'], 2, ['x','Y','Z']
-
-
-// assuming there are only 2 'div's on the page:
-foreach ( document.querySelectorAll('div'), function(value,index,self,count) {
-   console.log(value, index, self, count, this);
-});
-
-// <div></div>, 0, NodeList(2), 0, NodeList(2)
-// <div></div>, 1, NodeList(2), 1, NodeList(2)
-```
-Note that the callback parameters are optional.
-```javascript
 foreach([1,2,3], function() {
    console.log(this); // [1,2,3], [1,2,3], [1,2,3]
 });
+
+var xyz = ['X','Y','Z'];
+foreach( xyz , function(value, index, self, iterations) { 
+   if (!index) { console.log( (xyz === self) && (self === this) ) } // true
+   console.log(value, index, self, iterations);
+});
+
+// 'X', 0, ['X','Y','Z'], 0
+// 'Y', 1, ['X','Y','Z'], 1
+// 'Z', 2, ['X','Y','Z'], 2
 ```
+`(xyz === self) && (self === this)` is always `true`, unless `xyz` is a string.
+
+``javascript
+
+// assuming there are only 2 'div's on the page:
+foreach ( document.querySelectorAll('div'), function(value,index,self,count) {
+   console.log(value, index, self, count);
+});
+
+// <div></div>, 0, NodeList(2), 0
+// <div></div>, 1, NodeList(2), 1
+```
+Except for strings, `this` === `self` === `array`.
+
 You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
 
 ```javascript
