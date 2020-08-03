@@ -3,11 +3,32 @@ Helper function `foreach` with massively extended functionality.
 
 ### Syntax: 
 ```javascript
-foreach( MULTI array or iterable value, FUNCTION callback(value [, index, [, self [, iterations]]]){} , BOOLEAN use_dynamic_length, MULTI modify_this_scope);
+foreach( MULTI array or iterable value, FUNCTION callback([value [, index [, self [, iterations]]]]) {...} , BOOLEAN use_dynamic_length, MULTI modify_this_scope);
 
-as in: foreach(array, callback([value [, index [, self [, iterations]]]]), [dynamiclength], [thisArg]);
+Simplified: foreach(array, callback([value [, index [, self [, iterations]]]]), [dynamiclength], [thisArg]);
 ```
- 
+```javascript
+// Examples:
+
+foreach([1,2,3], function() { console.log(1) }); // 1 1 1
+
+foreach([1,2,3], function(value, index, self, count) { 
+    console.log(value, index, self, count, this); 
+});
+
+// 1, 0, [1,2,3], 0, [1,2,3]
+// 2, 1, [1,2,3], 1, [1,2,3]
+// 3, 2, [1,2,3], 2, [1,2,3]
+
+// assuming there are only 2 'div's on the page:
+foreach ( document.querySelectorAll('div'), function(value,index,self,count) {
+   console.log(value, index, self, count, this);
+});
+
+// <div></div>, 0, NodeList(2), 0, NodeList(2)
+// <div></div>, 1, NodeList(2), 1, NodeList(2)
+```
+
 You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
 
 ```javascript
@@ -22,36 +43,6 @@ foreach ([1,2,3,4,5,6] , function (value, index) {
 // 4, 3
 ```
 You can return other values besides `false`, but we'll get to that later.
-
-```javascript
-// Examples:
-
-// Note that the callback parameters are optional.
-
-foreach([1,2,3], function() {
-   console.log(this); // [1,2,3], [1,2,3], [1,2,3]
-});
-
-var xyz = ['X','Y','Z'];
-foreach( xyz , function(value, index, self, count) { 
-   if (!index) { console.log( (xyz === self) && (self === this) ) } // true
-   console.log(value, index, self, count);
-});
-
-// 'X', 0, ['X','Y','Z'], 0
-// 'Y', 1, ['X','Y','Z'], 1
-// 'Z', 2, ['X','Y','Z'], 2
-
-// Without changing the `this` scope, `array` === `self` === `this` is always `true` except for strings.
-
-// assuming there are only 2 'div's on the page:
-foreach ( document.querySelectorAll('div'), function(value,index,self,count) {
-   console.log(value, index, self, count);
-});
-
-// <div></div>, 0, NodeList(2), 0
-// <div></div>, 1, NodeList(2), 1
-```
  
 
 Sometimes you want to iterate over an array while conditionally modifying the array itself. By default, the array length is stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the `array.length` as you go. But be careful, your loop will run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set.
