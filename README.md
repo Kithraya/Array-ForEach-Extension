@@ -104,7 +104,7 @@ Note that `count` is not updated whenever you return `'continue'` or `true`, as 
 
 Dynamic Iteration:
 -----
-Sometimes you want to iterate over a value while conditionally modifying the value itself. By default, the value length is stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the `.length` as you go. But be careful, your loop will run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set as a failsafe. Dynamic iteration is not possible on numbers, as `.length` will be initialized to the number given.
+Sometimes you want to iterate over a value while conditionally modifying the value itself. By default, the value length is stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the `.length` as you go. But be careful, your loop will run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set as a failsafe. Dynamic iteration isn't possible on numbers, as `.length` will be initialized to the number given.
 
 ```javascript
 // An example with stored length. This is the default functionality.
@@ -121,6 +121,10 @@ var k = foreach([1,2,3], function(v,index) {
 }, true);
 
 console.log(k); // [1,2,3,"0","1","2","3","4","5"]
+
+foreach(400, function(v) {
+    console.log( this-v ); // 400, 399, 398, ..., 2, 1
+}, true); // useless
 ```
 
 ### More on strings:
