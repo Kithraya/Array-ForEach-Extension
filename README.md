@@ -67,7 +67,7 @@ var k = foreach([1,2,3], function(v,index) {
 console.log(k); // [1,2,3,"0","1","2","3","4","5"]
 ```
 
-##### foreach() also loops through numbers and strings:
+#### foreach() also iterates through numeric and string values:
 
 ```javascript
 
