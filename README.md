@@ -87,7 +87,39 @@ foreach ([1,2,3,4,5,6] , function (value, index) {
 // 3, 2
 // 4, 3
 ```
-You can return other values besides `false`, but we'll get to that later.
+You can return other values besides `false`. Returning `true` or the string `'continue'` is equivalent to calling the `continue` statement.
+ 
+ ```javascript
+ 
+ foreach (7, function(v,i,s,count) { 
+     if (i === 2) { return true } 
+     if (i === 5) { return }
+     console.log(v,i,s,count);
+  });
+ 
+ // 0, 0, 7, 0
+ // 1, 1, 7, 1
+ // 3, 3, 7, 2
+ // 4, 4, 7, 3
+ // 6, 6, 7, 5
+ ```
+Note that `count` is not updated whenever you return `'continue'` or `true`, as `foreach` will assume that you skipped over executing your function. If you simply return without specifying a value, `count` is updated as well.
+
+#### For numbers, `value` is always the same as `index`.
+
+```javascript
+
+foreach ( 40 , function(value, index, self, count) { console.log(this,value,index,self,count); });
+
+// 40, 0, 0, 40, 0
+// 40, 1, 1, 40, 1
+// 40, 2, 2, 40, 2
+// ...
+// 40, 38, 38, 40, 38
+// 40, 39, 39, 40, 39
+
+```
+
 
 Sometimes you want to iterate over a value while conditionally modifying the value itself. By default, the value length is stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the `.length` as you go. But be careful, your loop will run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set.
 
@@ -107,42 +139,8 @@ var k = foreach([1,2,3], function(v,index) {
 
 console.log(k); // [1,2,3,"0","1","2","3","4","5"]
 ```
-#### foreach() also accepts numeric and string values:
 
-```javascript
-
-foreach ( 40 , function(value, index, self, count) { console.log(this,value,index,self,count); });
-
-// 40, 0, 0, 40, 0
-// 40, 1, 1, 40, 1
-// 40, 2, 2, 40, 2
-// ...
-// 40, 38, 38, 40, 38
-// 40, 39, 39, 40, 39
-
-```
-For numbers, `value` is always the same as `index`. 
-
- You can return other values besides `false`. Returning `true` or the string `'continue'` is equivalent to calling the `continue` statement.
- 
- ```javascript
- 
- foreach (7, function(v,i,s,count) { 
-     if (i === 2) { return true } 
-     if (i === 5) { return }
-     console.log(v,i,s,count);
-  });
- 
- // 0, 0, 7, 0
- // 1, 1, 7, 1
- // 3, 3, 7, 2
- // 4, 4, 7, 3
- // 6, 6, 7, 5
- ```
-Note that `count` is not updated whenever you return `'continue'` or `true`, as `foreach` will assume that you skipped over executing your function. If you simply return without specifying a value, `count` is updated as well.
-
-
-### Foreach also iterates over strings.
+### More on strings:
 
 As strings are immutable, `foreach` internally splits strings to array form, and sets the `this` scope to that array, for easy manipulation.
 
