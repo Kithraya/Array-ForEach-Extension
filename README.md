@@ -36,11 +36,20 @@ var s = foreach([6,5,4], function(v, i) {
     this[i] = 0;
 }); 
 console.log(s); // [0,0,0]
+
+
+foreach('ABC', function(v, i, s) {
+    console.log(v,i,s);
+});
+
+// A, 0, ABC
+// B, 1, ABC
+// C, 2, ABC
 ```
 
 ### this
 
-The `this` scope of your function. Except for string collections, `this` scope is always set as your collection.
+The `this` scope of your function. Except for string collections, `this` scope is always set as your collection. For strings, `this` is set to the array form of the string.
 
 ### value
 
