@@ -12,17 +12,15 @@ foreach(array, callback(value [, index [, self [, iterations]]])[, dynamiclength
 
 // example
 
-foreach(['Z','Y','X','W'], function(value, index, self, iterations) {
+foreach(['Z','Y','X'], function(value, index, self, iterations) {
   
   console.log(value, index, self, iterations); 
   
-  /* 'Z', 0, ['Z','Y','X','W'], 0
-     'Y', 1, ['Z','Y','X','W'], 1
-     'X', 2, ['Z','Y','X','W'], 2
-     'W', 3, ['Z','Y','X','W'], 3
-  */
+  // 'Z', 0, ['Z','Y','X'], 0
+  // 'Y', 1, ['Z','Y','X'], 1
+  // 'X', 2, ['Z','Y','X'], 2
   
-  console.log(this); // ['Z','Y','X','W']
+  console.log(this); // ['Z','Y','X']
 
 });
 
