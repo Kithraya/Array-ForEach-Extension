@@ -100,3 +100,26 @@ For numbers, `value` is always the same as `index`.
  // 6, 6, 7, 5
  ```
 Note that `count` is not updated whenever you return `'continue'` or `true`, as `foreach` will assume that you skipped over executing your function. If you simply return without specifying a value, `count` is updated as well.
+
+
+### Foreach also iterates over strings.
+
+As strings are immutable, `foreach` internally converts any string to an array, and changes the `this` scope to the string in array form.
+
+```javascript
+var str = foreach('ABCDE', function(v,i,s) {
+   console.log(v,i,s); 
+   if (!i) { console.log(this) } // ["A","B","C","D","E"]
+   this[i] += i;
+});
+
+// A, 0, ABCDE
+// B, 1, ABCDE
+// C, 2, ABCDE
+// D, 3, ABCDE
+// E, 4, ABCDE
+
+console.log(str); // A0B1C2D3E4
+```
+
+At the moment, do not use `foreach` for strings having surrogate pairs, as foreach splits by `''` which defaults to UTF-16 codeunits.
