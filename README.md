@@ -45,7 +45,7 @@ foreach ([1,2,3,4,5,6] , function (value, index) {
 You can return other values besides `false`, but we'll get to that later.
  
 
-Sometimes you want to iterate over an array while conditionally modifying the array itself. By default, the array length is stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the `array.length` as you go. But be careful, your loop will run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set.
+Sometimes you want to iterate over a value while conditionally modifying the value itself. By default, the value length is stored on initialization so as not to create infinite loops, but you can set `dynamiclength` to `true` to continually check the `.length` as you go. But be careful, your loop will run indefinitely if you never return `false` within your callback, or if `foreach.maxIterations` is not set.
 
 ```javascript
 // An example with stored length. This is the default functionality.
@@ -58,7 +58,7 @@ var k = foreach([1,2,3], function(v,index) {
 }, true);
 console.log(k); // [1,2,3,"0","1","2","3","4","5"]
 ```
-#### foreach() also iterates through numeric and string values:
+#### foreach() also accepts numeric and string values:
 
 ```javascript
 
@@ -118,4 +118,4 @@ console.log(str); // A0B1C2D3E4
 Once `foreach` is done iterating over the string-array, it internally `joins` the array back into a `String` and returns that string.
 
 #### Caveat for strings:
-For now, do not use `foreach` for strings containing surrogate pairs, as foreach `splits` / `joins` by `''` which defaults to UTF-16 codeunits, which destroy surrogate pairs.
+For now, do not use `foreach` for strings containing surrogate pairs, as foreach `splits` & `joins` by `''` which defaults to UTF-16 codeunits, which destroy surrogate pairs.
