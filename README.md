@@ -27,6 +27,12 @@ foreach ( document.querySelectorAll('div'), function(value, index, self, count) 
 
 // NodeList(2), <div></div>, 0, NodeList(2), 0
 // NodeList(2), <div></div>, 1, NodeList(2), 1
+
+
+var s = foreach([6,5,4], function(v, i) {
+    this[i] = 0;
+}); 
+console.log(s); // [0,0,0]
 ```
 
 ### this
@@ -49,6 +55,10 @@ Your collection.
 
 The number of times that your function has executed. Unlike index, this value cannot be modified. 
 Useful if you're jumping back and forth between indexes, but want to make sure that your function runs a specific number of times.
+
+-----
+
+`foreach` returns your collection after it has finished looping over it. For falsy collections, `foreach` does not execute, and returns `undefined`.
 
 -----
 
