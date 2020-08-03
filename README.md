@@ -104,13 +104,15 @@ Note that `count` is not updated whenever you return `'continue'` or `true`, as 
 
 ### Foreach also iterates over strings.
 
-As strings are immutable, `foreach` internally converts each string to an array via `String.split('')`, and sets the `this` scope to said array. This allows for easy modification:
+As strings are immutable, `foreach` internally converts each string to an array via `String.split('')`, and sets the `this` scope to that array. This allows for easy modification:
 
 ```javascript
 var str = foreach('ABCDE', function(v,i,s) {
    console.log(v,i,s); 
    if (!i) { console.log(this) } // ["A","B","C","D","E"]
-   this[i] += i; /// if `this` was ABCDE instead of its array equivalent, this action would silently fail (or in strict mode, throw an error)
+   this[i] += i; 
+   // if `this` was ABCDE instead of `['A','B','C','D','E`],
+   // this action would silently fail (or in strict mode, throw an error)
 });
 
 // A, 0, ABCDE
