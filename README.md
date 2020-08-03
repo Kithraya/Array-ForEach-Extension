@@ -85,10 +85,10 @@ Sometimes you want to iterate over a value while conditionally modifying the val
 ```javascript
 // An example with stored length. This is the default functionality.
 var k = foreach([1,2,3], function(v,i) { 
-    this.push( String(i) )
+    this.push( i )
 });
 
-console.log(k); // [1,2,3,"0","1","2"]
+console.log(k); // [1,2,3,0,1,2]
 
 // An example with dynamic length
 var k = foreach([1,2,3], function(v,index) {
