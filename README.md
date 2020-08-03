@@ -45,7 +45,9 @@ The index that you're currently at in your collection. `foreach` allows you to j
 
 Your collection.
 
-### count / iterations
+#### count / iterations
+
+-----
 
 The number of times that your function has executed. Unlike index, this value cannot be modified. 
 Useful if you're jumping back and forth between indexes, but want to make sure that your function runs a specific number of times.
