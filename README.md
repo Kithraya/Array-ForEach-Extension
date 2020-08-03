@@ -35,6 +35,23 @@ foreach([1,2,3], function() {
 });
 
 ```
+Sometimes you want to iterate over an array while conditionally modifying the array itself. By default, the array length is stored on initialization, but you can set `dynamiclength` to `true` to continually check the array length. But be careful, you can create infinite loops if you do not return `false`, or if `foreach.maxIterations` is not set.
+
+```javascript
+// example with stored length
+var k = foreach([1,2,3], function(v,i) {
+   this.push( String(i) );
+});
+console.log(k); // [1,2,3,"0","1","2"]
+
+// example with dynamic length
+
+var k = foreach([1,2,3], function(v,i) {
+   this.push( String(i) );
+   if (i > 4) { return false } // [1,2,3,'0','1','2','3','4','5']
+}, true);
+```
+
 ##### foreach() also loops through numbers and strings:
 
 ```javascript
