@@ -212,9 +212,9 @@ For now, do not use `foreach` for strings containing surrogate pairs, as foreach
 
 ### Change Log:
 
-..*// custom release history
-// 1.2.1 added support for strings
-// 1.2.2 added support for numbers
+  *// custom release history
+  *// 1.2.1 added support for strings
+  *// 1.2.2 added support for numbers
 // 1.2.3 changed `set[i]` to `(num ? i : set[i])`, making numeric iteration ~6x faster
 // 1.2.4 added `.maxIterations` for debugging / quick testing
 // 1.2.4.5 changed set to be `self`
