@@ -226,6 +226,6 @@ For now, do not use `foreach` for strings containing surrogate pairs, as foreach
 
 1.2.4.8 added support for returning custom values out of `foreach` itself (`true`, `false`, `null`, and any custom string by using `return '@value'`;
 
-1.2.4.9 returning `true` is now skips over the next value in the set, rather than just updating `count`
+1.2.4.9 returning `true` now skips over the next value in the set, rather than just updating `count`
 
 1.2.5 allow reverse iteration of arrays
