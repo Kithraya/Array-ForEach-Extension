@@ -211,10 +211,8 @@ Once `foreach` is done iterating over the string-array, it internally `joins` th
 For now, do not use `foreach` for strings containing surrogate pairs, as foreach `splits` & `joins` by `''` which defaults to UTF-16 codeunits, which destroy surrogate pairs.
 
 #### Change Log:
-
-  *// custom release history
   
-  *// 1.2.1 added support for strings
+..*// 1.2.1 added support for strings
   
   *// 1.2.2 added support for numbers
   
