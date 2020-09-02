@@ -113,45 +113,12 @@ Your set.
 #### count / iterations
 
 The number of times that your callback function has executed. Unlike index, this value cannot be modified. 
-Useful if you're jumping back and forth between indexes, but want to make sure that your function only runs a specific number of times. `count` is not updated when returning `true` or `'continue'`.
+Useful if you're jumping back and forth between indexes, but want to make sure that your function only runs a specific number of times. `count` is not updated when returning `true` or `'continue'`, as `foreach` will assume that you skipped over executing your function. If you simply return without specifying a value, `count` is updated as well.
+
 
 -----
 
-Breaking out of loops:
------
-
-You can instantly break out of any `foreach` loop at any time by returning `false` within your callback function.
-
-```javascript
-foreach ([1,2,3,4,5,6] , function (value, index) {
-   console.log(value, index);
-   if (value === 4) { return false }
-});
-
-// 1, 0
-// 2, 1
-// 3, 2
-// 4, 3
-```
-You can return other values besides `false`. Returning `true` or the string `'continue'` is equivalent to calling the `continue` statement.
- 
- ```javascript
- 
- foreach (7, function(v,i,s,count) { 
-     if (i === 2) { return true } 
-     if (i === 5) { return }
-     console.log(v,i,s,count);
-  });
- 
- // 0, 0, 7, 0
- // 1, 1, 7, 1
- // 3, 3, 7, 2
- // 4, 4, 7, 3
- // 6, 6, 7, 5
- ```
-Note that `count` is not updated whenever you return `'continue'` or `true`, as `foreach` will assume that you skipped over executing your function. If you simply return without specifying a value, `count` is updated as well.
-
-#### Jumping to specific indexes:
+#### Jumping to specific indexes: (Later)
 
 ...
 
