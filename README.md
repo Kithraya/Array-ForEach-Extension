@@ -76,6 +76,17 @@ foreach('ABC', function(v,i,s) {
 // B, 1, ABC
 // C, 2, ABC
 ```
+Iteration process: `foreach` checks if your set has a `.length` property. If it does, `.length` is used. If it doesn't, it checks if your set is a number. If it is, 
+that number is used as `.length`. If it isn't, your set is coerced to a binary form (0 or 1). (This value is always 1, since we return all falsy values at the beginning of the function)
+
+Other value examples:
+
+```javascript
+var x = 0;
+foreach(function(a,b){}, function() { console.log(x++); }); // => 0, 1
+foreach(/str/, function(v) { console.log(this, v, i); }); // => /str/, undefined, 0
+
+```
 `true` is a special case. Give the set `true`, and your function will run, but only once. If your set is falsy, `foreach` will not run at all.
 ```javascript
 foreach(true, function(v,i) { console.log(v, i, this,+this) }); // undefined, 0, true, 1
