@@ -18,6 +18,18 @@ foreach([1,2,3], function(value, index, self, iterations) {
 // 2, 1, [1,2,3], 1
 // 3, 2, [1,2,3], 2
 ```
+You can `break` and `continue` out of `foreach` by returning `false` and `true`, respectively. Example:
+```javascript
+foreach([1,2,3,4,5,6,7], function(v) {
+    console.log(v);
+    
+    if (v === 2) { return true }
+    if (v === 6) { return false }
+});
+
+// 1, 2, 4, 5, 6
+```
+
 Foreach can be used just like regular `for` loops. For `Number` sets, `value` is always the same as `index`.
 
 ```javascript
