@@ -30,6 +30,17 @@ foreach([1,2,3,4,5,6,7], function(v) {
 // 1, 2, 4, 5, 6
 ```
 
+Foreach can also iterate backwards over any set, with the `options` parameter as `-1`.
+```javascript
+foreach([1,2,3,4,5,6,7, function(value, index) {
+    console.log(value, index);
+    if (value === 6 || value === 3) { return true }
+}, -1);
+
+// (value, index) => (7, 6), (6, 5), (4, 3), (3, 2), (1, 0)
+
+```
+
 Foreach can be used just like regular `for` loops. For `Number` sets, `value` is always the same as `index`.
 
 ```javascript
