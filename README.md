@@ -56,7 +56,7 @@ console.timeEnd('foreach');
 
 Foreach works on arraylike objects:
 ```javascript
-// assuming there are only 2 'div's on the page:
+// assume 2 divs on the page:
 foreach ( document.querySelectorAll('div'), function(value, index, self, count) {
    console.log(this, value, index, self, count);
 });
@@ -213,12 +213,21 @@ For now, do not use `foreach` for strings containing surrogate pairs, as foreach
 ### Change Log:
 
   *// custom release history
+  
   *// 1.2.1 added support for strings
+  
   *// 1.2.2 added support for numbers
+  
 // 1.2.3 changed `set[i]` to `(num ? i : set[i])`, making numeric iteration ~6x faster
+
 // 1.2.4 added `.maxIterations` for debugging / quick testing
+
 // 1.2.4.5 changed set to be `self`
+
 // 1.2.4.7 allowed `foreach` to specify returning default `undefined` instead of the original set post-iteration
+
 // 1.2.4.8 added support for returning custom values out of the function itself (true, false, null, and any custom string by using `return '@value'`;
+
 // 1.2.4.9 returning `true` is modified to skip over the next value in the set.
+
 // 1.2.5 allow reverse iteration of arrays
