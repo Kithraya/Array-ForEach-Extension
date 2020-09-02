@@ -83,7 +83,7 @@ Other value examples:
 
 ```javascript
 var x = 0;
-foreach(function(a,b){}, function() { console.log(x++); }); // => 0, 1
+foreach(function(a,b){}, function() { console.log(x++); }); // => 0, 1 (functions have a length)
 foreach(/str/, function(v) { console.log(this, v, i); }); // => /str/, undefined, 0
 
 ```
