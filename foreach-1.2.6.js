@@ -6,13 +6,13 @@ function foreach(set, callback, options, callscope) { // go inverse on negative 
 
 	if (!set) { return } // Return `undefined` (`null`?) if falsy. At present, falsy values do not make sense being iterable
 	if (typeof callback !== 'function') { throw new TypeError(callback + ' is not a function!') }
+	
+	var i=0, c=0, inc=1, left_cond = len, right_cond = Infinity; // index, count, increment
 
 	var limit = foreach.maxIterations || Infinity;
 	var len = (typeof set.length === 'number') ? set.length : (typeof set === 'number') ? set : 1; // +!!truthyVar => 1
 	
 	if (len < 0) { return }
-	
-	var i=0, c=0, inc=1, left_cond = len, right_cond = Infinity; // index, count, increment
 
 	/* If set has a numeric .length property, return the .length;
 	   If set doesnt have a .length, assume it's a number.
