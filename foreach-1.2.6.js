@@ -9,6 +9,9 @@ function foreach(set, callback, options, callscope) { // go inverse on negative 
 
 	var limit = foreach.maxIterations || Infinity;
 	var len = (typeof set.length === 'number') ? set.length : (typeof set === 'number') ? set : 1; // +!!truthyVar => 1
+	
+	if (len < 0) { return }
+	
 	var i=0, c=0, inc=1, left_cond = len, right_cond = Infinity; // index, count, increment
 
 	/* If set has a numeric .length property, return the .length;
@@ -26,14 +29,14 @@ function foreach(set, callback, options, callscope) { // go inverse on negative 
 	if (options === -1) { dynamiclength = false; retfalsy = true; inverse = true; }
 
 	callscope = (nullscope) ? null : (arguments.length === 4) ? callscope : set;
-// ( ͡⚆ ͜ʖ ͡⚆)╭∩╮
+
 	if (inverse) {
 		i = len - 1;
 		inc = -1;
 		left_cond = -Infinity;
 		right_cond = 0;
 	}
-	/*(OR) Logic Gate Table:
+	/*! (OR) Logic Gate Table:
 		[FOREACH v1.2.5)]: The `for (; test(); i+=inc) {}` approach was ~12+% slower due to repeatedly calling test() at each iteration step
 
 		Condition: ( LEFTSIDE || RIGHTSIDE )
@@ -49,7 +52,7 @@ function foreach(set, callback, options, callscope) { // go inverse on negative 
 
 			v = callback.call( callscope, (num ? i: set[i]), i, self, c );
 
-			if (v !== undefined) {
+			if (v !== u) {
 				if (v === false) { break } else
 				if (v === true) {
 					i+=inc; // skip over next element / iteration in the set (since this isnt a traditional loop, by the time we get here the callback is already executed)
