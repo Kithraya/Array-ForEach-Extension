@@ -1,4 +1,4 @@
-foreach.version = "1.2.6";
+foreach.version = "1.2.6.1";
 foreach.maxIterations = null;
 foreach.Worker = null;
 
