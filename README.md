@@ -1,5 +1,5 @@
 # foreach
-Helper function `foreach` with massively extended functionality.
+Array.forEach, but more versatile.
 
 ### Syntax: 
 ```javascript
