@@ -5,7 +5,7 @@ if (!Array.prototype['forEach']) {
 
   Array.prototype['forEach'] = function(callback, thisArg) {
 
-    if (this === null) { throw new TypeError('this is null or not defined'); }
+    if (this == null) { throw new TypeError('this is null or not defined'); }
 
     var T, k;
     // 1. Let O be the result of calling toObject() passing the
